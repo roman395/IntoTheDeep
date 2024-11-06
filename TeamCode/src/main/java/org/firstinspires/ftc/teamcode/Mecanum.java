@@ -21,10 +21,10 @@ public Mecanum(LinearOpMode linearOpMode){
    this.linearOpMode = linearOpMode;
    hardwareMap = linearOpMode.hardwareMap;
    gamepad1 = linearOpMode.gamepad1;
-    FL=hardwareMap.get(DcMotor.class,"frontLeftMotor");
-    FR=hardwareMap.get(DcMotor.class,"frontRightMotor");
-    BL=hardwareMap.get(DcMotor.class,"backLeftMotor");
-    BR=hardwareMap.get(DcMotor.class,"backRightMotor");
+    FL=hardwareMap.get(DcMotor.class,"leftFront");
+    FR=hardwareMap.get(DcMotor.class,"rightFront");
+    BL=hardwareMap.get(DcMotor.class,"leftRear");
+    BR=hardwareMap.get(DcMotor.class,"rightRear");
     FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     FR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     BL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

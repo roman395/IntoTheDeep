@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp
 public class TeleOp extends LinearOpMode {
-    Module mod;
     Mecanum mecanum;
     @Override
     public void runOpMode() throws InterruptedException {
@@ -16,6 +15,5 @@ public class TeleOp extends LinearOpMode {
             mecanum.TeleOp();
         }
 
-        //mod.Push();
     }
 }
