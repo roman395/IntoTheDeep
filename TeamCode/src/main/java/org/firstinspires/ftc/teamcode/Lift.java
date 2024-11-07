@@ -38,15 +38,17 @@ public class Lift{
     }
     public void Up(){
         if (motorR.getTargetPosition()<maxRot&&motorL.getTargetPosition()<maxRot){
-            motorL.setPower(1);
-            motorR.setPower(-1);
+            motorL.setPower(-1);
+            motorR.setPower(1);
         }
+        else{Off();}
     }
     public void Down(){
         if(motorR.getTargetPosition()>minRot&&motorL.getTargetPosition()>minRot){
-            motorR.setPower(-1);
-            motorL.setPower(1);
+            motorR.setPower(1);
+            motorL.setPower(-1);
         }
+        else{Off();}
     }
     public void Off(){
         motorL.setPower(0);

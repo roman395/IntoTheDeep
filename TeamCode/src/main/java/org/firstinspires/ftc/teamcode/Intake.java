@@ -17,16 +17,8 @@ public class Intake{
         this.linearOpMode=linearOpMode;
         hardwareMap=linearOpMode.hardwareMap;
         s=hardwareMap.get(CRServo.class,"Intake");
-        g=linearOpMode.gamepad2;
-    }
-    public void Input(){
-        s.setPower(1);
-    }
-    public void Output(){
-        s.setPower(-1);
-    }
-    public void Off(){
-        s.setPower(0);
+
+
     }
 
 }
