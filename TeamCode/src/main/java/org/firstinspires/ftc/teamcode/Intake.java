@@ -12,7 +12,7 @@ public class Intake{
     CRServo s;
     LinearOpMode linearOpMode;
     HardwareMap hardwareMap;
-    Gamepad g;
+
     public Intake(LinearOpMode linearOpMode) {
         this.linearOpMode=linearOpMode;
         hardwareMap=linearOpMode.hardwareMap;
