@@ -17,8 +17,6 @@ public class Intake{
         this.linearOpMode=linearOpMode;
         hardwareMap=linearOpMode.hardwareMap;
         s=hardwareMap.get(CRServo.class,"Intake");
-
-
     }
 
 }
