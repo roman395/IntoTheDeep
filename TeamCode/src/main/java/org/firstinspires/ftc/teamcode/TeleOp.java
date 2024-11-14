@@ -16,20 +16,11 @@ public class TeleOp extends LinearOpMode {
         l=new Lift(this);
         p=new Perekid(this);
         waitForStart();
-        while (opModeIsActive()){
-
+        while (opModeIsActive()) {
             mecanum.TeleOp();
-            if(gamepad2.dpad_up){l.Up();}
-            else if (gamepad2.dpad_down) {l.Down();}
-            else {l.Off();}
-
-            if(gamepad2.x){i.s.setPower(-1);}
-            else if(gamepad2.circle){i.s.setPower(1);}
-            else {i.s.setPower(0);}
-
-
-
-
+            p.Control();
+            i.Control();
+            l.Control();
         }
 
     }

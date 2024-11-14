@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -10,11 +11,12 @@ public class Lift{
     public DcMotor motorL;
     public DcMotor motorR;
 
-    public int maxRot=10;
-    public int minRot=0;
+    public int maxRot=1000;
+    public int minRot=-1000;
 
     LinearOpMode linearOpMode;
     HardwareMap hardwareMap;
+    Gamepad g2;
 
     public Lift(LinearOpMode linearOpMode){
         this.linearOpMode=linearOpMode;
@@ -23,37 +25,26 @@ public class Lift{
         motorL=hardwareMap.get(DcMotor.class,"leftLift");
         motorR=hardwareMap.get(DcMotor.class,"rightLift");
 
-        motorR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorR.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorL.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        motorL.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorR.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        motorL.setTargetPosition(10);
-        motorR.setTargetPosition(-10);
-
-        motorL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
+        motorR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        g2=linearOpMode.gamepad2;
     }
-    public void Up(){
-        if (motorR.getTargetPosition()<maxRot&&motorL.getTargetPosition()<maxRot){
-            motorL.setPower(-1);
+    public void Control() {
+        if (g2.dpad_up&&(motorL.getTargetPosition() < maxRot && motorL.getCurrentPosition() < maxRot)) {
+            motorL.setPower(1);
             motorR.setPower(1);
         }
-        else{Off();}
-    }
-    public void Down(){
-        if(motorR.getTargetPosition()>minRot&&motorL.getTargetPosition()>minRot){
-            motorR.setPower(1);
+        else if (g2.dpad_down&&(motorL.getTargetPosition() > minRot && motorL.getCurrentPosition() > minRot)) {
+            motorR.setPower(-1);
             motorL.setPower(-1);
         }
-        else{Off();}
+        else {
+            motorL.setPower(0);
+            motorR.setPower(0);
+        }
     }
-    public void Off(){
-        motorL.setPower(0);
-        motorR.setPower(0);
-    }
-
 
 }
