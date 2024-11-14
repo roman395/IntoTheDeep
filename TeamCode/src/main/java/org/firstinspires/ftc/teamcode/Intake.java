@@ -24,18 +24,22 @@ public class Intake{
         s=hardwareMap.get(CRServo.class,"Intake");
         fish=hardwareMap.get(DigitalChannel.class,"FlyingFish");
         l=hardwareMap.get(LED.class,"lamp");
+
         gamepad2=linearOpMode.gamepad2;
     }
     public void Control(){
         if(gamepad2.right_trigger>=0.5){s.setPower(1);}
           else if (gamepad2.left_trigger>=0.5) {s.setPower(-1);}
         else {s.setPower(0);}
-        if(fish.getState()){
-            l.enableLight(true);
+
+        if(!fish.getState()){
+            l.enable(true);
+
         }
         else {
-            l.enableLight(false);
+            l.enable(false);
         }
+
 
     }
 

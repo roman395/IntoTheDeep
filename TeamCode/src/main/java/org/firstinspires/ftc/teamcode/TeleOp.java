@@ -21,6 +21,7 @@ public class TeleOp extends LinearOpMode {
             p.Control();
             i.Control();
             l.Control();
+
         }
 
     }
